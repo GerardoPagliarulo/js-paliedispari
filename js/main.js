@@ -8,8 +8,8 @@
 var parolaUtente
 
 // Chiedere all'utente di inserire una parola
-parolaUtente = prompt('Inserire una parola:').toLowerCase();
-// parolaUtente = parolaUtente.toLowerCase();
+parolaUtente = prompt('Inserire una parola:').toLowerCase().trim();
+// parolaUtente = parolaUtente.charAt(0).toLowerCase() + parolaUtente.slice(1);
 
 // Invocazione
 var palindroma = parolaPalindroma(parolaUtente);
@@ -61,32 +61,20 @@ var sommaNum = somma(sceltaUtente2, numComputer);
 console.log('Somma dei due numeri: ', sommaNum);
 
 var numPari = pariDispari(sommaNum);
-
-if (numPari == 'Pari') {
-    console.log('Pari');
-}
-else {
-    console.log('Dispari');  
-}
+console.log(numPari);
 
 // Dichiarazione del vincitore
-if (sceltaUtente1 == 'Pari' && numPari == 'Pari') {
+if (sceltaUtente1 == numPari) {
     console.log('Hai Vinto!');
 }
-else if (sceltaUtente1 == 'Pari' && numPari == 'Dispari') {
+else {
     console.log('Hai Perso!');
-}
-else if (sceltaUtente1 == 'Dispari' && numPari == 'Pari') {
-    console.log('Hai Perso');
-}
-else if (sceltaUtente1 == 'Dispari' && numPari == 'Dispari') {
-    console.log('Hai Vinto');
 }
 
 // FUNZIONI
 // Funzione numero random
-function numeroRandom(a, b) {
-var risultato = Math.floor( Math.random() * 5 ) + 1;
+function numeroRandom(min, max) {
+var risultato = Math.floor( Math.random() * (max - min + 1) ) + min;
     return risultato;
 }
 
@@ -100,7 +88,6 @@ function pariDispari(a) {
     if (a % 2 == 0) {
         return 'Pari';
     }
-
     return 'Dispari';
 }
 
